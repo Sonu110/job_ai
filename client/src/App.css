@@ -1,0 +1,56 @@
+
+#genrate
+{
+  background-color: rgb(205, 233, 245);clip-path: ellipse(50% 19% at 50% 46%);
+  
+}
+.active-label {
+  transform: translateY(-0.9rem) scale(0.8);
+  pointer-events: none;
+  color: #ee7724; /* Change color as needed */
+}
+
+img
+{
+  width: 100%;
+  object-fit: cover;
+}
+.catagorybox:hover .boxicons
+{
+ 
+  background-color: #0146a6;
+  color:white;
+  cursor: pointer;
+}
+/* Add this to your global styles or a separate CSS file */
+
+.zoom-image {
+  display: block;
+    width: 100%;
+    min-height: 258px;
+    object-fit: cover;
+  transition: transform 0.3s; /* Add smooth transition */
+}
+
+.zoom-image:hover {
+  transform: scale(1.1); /* Scale up the image on hover */
+}
+/* styles.css or your styled-components file */
+/* styles.css or your styled-components file */
+.filtercontainer {
+  transition: opacity 0.3s ease;
+  pointer-events: none; /* Disable pointer events when closed */
+}
+
+.filterbox {
+  transition: transform 0.3s ease;
+}
+
+.filtercontainer.open {
+  pointer-events: all; /* Enable pointer events when open */
+}
+
+.filterbox.open {
+  transform: translateX(0);
+}
+
