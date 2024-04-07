@@ -22,7 +22,7 @@ function Massgae() {
     console.log("the received message", recived);
 
     useEffect(() => {
-        const socket = io('http://localhost:3000');
+        const socket = io(`${import.meta.env.VITE_API_URL}`);
         setSocket(socket);
         // Connect to the socket server
         socket.on('connect', () => {
