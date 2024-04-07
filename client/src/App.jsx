@@ -36,6 +36,7 @@ import Userdashbordhome from './Pages/Userdashboard/Home/Userdashbordhome';
 import UserDashboardhomepage from './Pages/Userdashboard/Pages/Userdashboardhomepage';
 import Massgae from './Pages/Userdashboard/Pages/Massgae';
 import Userprofilepage from './Pages/Userdashboard/Pages/Userprofilepage';
+import Error404 from './Pages/Error404';
 
 
 function App() {
@@ -91,6 +92,9 @@ function App() {
           
           
         </Route>
+
+
+        <Route path='*' element={<Error404></Error404>}></Route>
 
       </>
     )
