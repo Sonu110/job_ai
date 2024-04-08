@@ -34,7 +34,7 @@ function HeroSection() {
       >
         <div className="container grid grid-cols-1 lg:grid-cols-2 h-full  px-0 sm:px-10 pt-20">
           <motion.div className="fromconatiner p-8 flex items-start gap-6 justify-center flex-col" variants={containerVariants} initial="hidden" animate="visible">
-            <h1 className='text-xl   sm:text-5xl md:text-6xl text-start'>There Are <span className='text-primary'>93,178</span> Postings Here For you!</h1>
+            <h1 className='text-xl   sm:text-5xl md:text-6xl text-start'>There Are <span className='text-primary'>93</span> Postings Here For you!</h1>
             <h2 className='text-sm text-secondary-200'>Find Jobs, Employment & Career Opportunities</h2>
              
             <form className="  grid grid-cols-1 md:grid-cols-4  gap-2  bg-white p-5 w-full">
