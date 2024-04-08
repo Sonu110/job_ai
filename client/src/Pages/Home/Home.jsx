@@ -59,7 +59,7 @@ function Home() {
       <div className='subjobsection'>
         <div className="heading-text mt-28">
           <h2 className='text-center text-3xl mt-3'>Popular Job Categories</h2>
-          <h3 className='text-center mt-3 text-secondary-200'>2020 jobs live - 293 added today.</h3>
+          <h3 className='text-center mt-3 text-secondary-200'>2024 jobs live - 293 added today.</h3>
         </div>
         {isLoading ? (
           <p><Selecton></Selecton></p>
