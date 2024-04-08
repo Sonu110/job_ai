@@ -11,6 +11,7 @@ const  bcrypt = require('bcryptjs')
 const jwt  = require('jsonwebtoken')
 const path = require('path'); // Import the path module
 const auth = require('../middleware/auth')
+const UserProfile = require('../model/Userprofileschama')
 const key = "sonu#12345"
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -456,6 +457,19 @@ router.route('/allcandidatenotifaction/:id').get(auth,async (req,res)=>{
         res.status(500).json({ error: 'Internal server error' });
     }
 });
+
+
+// ============== all UserProfile page =========
+router.post('/userprofiledata', async (req, res) => {
+    try {
+      const userProfile = new UserProfile(req.body);
+      await userProfile.save();
+      res.status(201).json({ message: 'User profile created successfully' });
+    } catch (error) {
+      console.error('Error creating user profile:', error);
+      res.status(500).json({ error: 'Internal server error' });
+    }
+  });
 
 
 module.exports = { router }

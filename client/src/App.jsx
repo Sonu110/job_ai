@@ -37,6 +37,7 @@ import UserDashboardhomepage from './Pages/Userdashboard/Pages/Userdashboardhome
 import Massgae from './Pages/Userdashboard/Pages/Massgae';
 import Userprofilepage from './Pages/Userdashboard/Pages/Userprofilepage';
 import Error404 from './Pages/Error404';
+import JobProfileForm from './Pages/Userdashboard/Pages/JobProfileForm';
 
 
 function App() {
@@ -84,7 +85,9 @@ function App() {
 
         <Route path='/userdashboard'  element={<Userdashbordhome auth={data}/>}>
         <Route index element={<UserDashboardhomepage/>}></Route>
-          <Route path='my-profile' element={<Userprofilepage/>}></Route>
+        <Route path='my-profile' element={<Userprofilepage/>}></Route>
+        <Route path='create-profile' element={<JobProfileForm/>}></Route>
+          
          
           <Route path='alerts' element={<Livejobalertpage/>}></Route>
           <Route path='massage/:id' element={<Massgae/>}></Route>
