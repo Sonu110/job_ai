@@ -40,7 +40,7 @@ const cvfiles =multer({ storage: cv })
 
 router.get('/', (req,res)=>{
 
-    res.send('server running sucessfully in nodejs ')
+    res.send('server running sucessfully in nodejs  working ')
 
 })
 router.post('/login', async (req, res) => {
