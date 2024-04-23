@@ -460,16 +460,50 @@ router.route('/allcandidatenotifaction/:id').get(auth,async (req,res)=>{
 
 
 // ============== all UserProfile page =========
-router.post('/userprofiledata', async (req, res) => {
+router.post('/userprofiledata', auth, upload.single('file'), async (req, res) => {
     try {
-      const userProfile = new UserProfile(req.body);
+
+        const extinguser = await UserProfile.findOne({userId : req.user.id})
+        if(!extinguser)
+        {
+            return res.status(404).json("already exsting user")
+        }
+      
+      const { fullName, jobTitle, location, rate, memberSince, about, portfolio, contactEmail, contactPhone } = req.body;
+      const { file } = req.file; // Assuming multer middleware is used to handle file uploads
+  
+
+      const experienceList = req.body.experienceList;
+      const educationList = req.body.educationList;
+        console.log(educationList);
+     
+      const userProfileData = {
+        userId: req.user.id,
+        fullName,
+        jobTitle,
+        location,
+        rate,
+        memberSince,
+        about,
+        experienceList,
+        educationList,
+        portfolio,
+        contactEmail,
+        contactPhone,
+        profilePicture: file ? file.path : null 
+      };
+  
+     
+      const userProfile = new UserProfile(userProfileData);
+  
       await userProfile.save();
+    
+  
       res.status(201).json({ message: 'User profile created successfully' });
     } catch (error) {
       console.error('Error creating user profile:', error);
       res.status(500).json({ error: 'Internal server error' });
     }
-  });
-
+});
 
 module.exports = { router }

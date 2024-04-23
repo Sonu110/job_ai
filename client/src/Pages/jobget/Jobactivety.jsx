@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import Selecton from '../../components/Selecton';
 
 function Jobactivety() {
   const { id } = useParams();
@@ -31,7 +32,12 @@ function Jobactivety() {
 
   return (
     <div className='bg-gray-100 min-h-screen p-4 grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 pt-24 gap-3'>
-      {activitiesData.map(activity => (
+    {
+      loading ? <Selecton></Selecton>
+      :
+    
+    
+      (activitiesData.map(activity => (
         <div key={activity._id} className='max-h-[400px] bg-white shadow-lg rounded-lg overflow-hidden'>
           <div className='px-4 py-2'>
             <h2 className='text-lg font-bold text-gray-800'>{activity.jobTitle}</h2>
@@ -54,8 +60,10 @@ function Jobactivety() {
             <p>Email: {activity.email}</p>
           </div>
         </div>
-      ))}
-    </div>
+      )))
+    
+}
+      </div>
   );
 }
 
