@@ -1,11 +1,4 @@
 import React from 'react';
-import { IoLocationOutline } from "react-icons/io5";
-import { LiaToolboxSolid } from "react-icons/lia";
-import { CgSandClock } from "react-icons/cg";
-import { MdCurrencyRupee } from "react-icons/md";
-import { CiBookmark } from "react-icons/ci";
-import { motion } from "framer-motion";
-
 function Jobresult({ companyName, jobName, description, experience, salary }) {
   return (
     <div className="group mx-2 mt-4 grid max-w-screen-md grid-cols-12 space-x-8 overflow-hidden rounded-lg border py-8 text-black shadow transition hover:shadow-lg cursor-pointer">

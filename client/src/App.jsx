@@ -36,6 +36,11 @@ import Massgae from './Pages/Userdashboard/Pages/Massgae';
 import Userprofilepage from './Pages/Userdashboard/Pages/Userprofilepage';
 import Error404 from './Pages/Error404';
 import JobProfileForm from './Pages/Userdashboard/Pages/JobProfileForm';
+import Bookmarkedpage from './Pages/Userdashboard/Pages/Bookmarkedpage';
+import Shortlistjobs from './Pages/Userdashboard/Pages/Shortlistjobs';
+import JobProfilupdateform from './Pages/Userdashboard/Pages/JobProfilupdateform';
+import Companyprofileupdate from './Pages/Dashbord/Pages/Companyprofileupdate';
+import Companyprofiepage from './Pages/Dashbord/Pages/Companyprofiepage';
 
 
 function App() {
@@ -71,10 +76,17 @@ function App() {
 
         <Route path='/companydashboard'  element={<Dashbordhome auth ={post}/>}>
         <Route index element={<Dashboardhomepage/>}></Route>
-          <Route path='company-profile' element={<Companyprofile/>}></Route>
+        <Route path='create-profile' element={<Companyprofile/>}></Route>
+        
+
+
+        <Route path='company-profile' element={<Companyprofiepage></Companyprofiepage>}></Route>
+        <Route path='update-profile' element={<Companyprofileupdate/>}></Route>
+        <Route path='comapny' element={<Companyprofileupdate/>}></Route>
+          
           <Route path='post-new-job' element={<PostJobfrom/>}></Route>
           <Route path='manage-jobs' element={<Managejobdata></Managejobdata>}></Route>
-          <Route path='all-applicants' element={<Allapplicationdata/>}></Route>
+          <Route path='all-applicants' element={<Allcandidateform/>}></Route>
           <Route path='shortlisted-resumes' element={<Allapplicationdata/>}></Route>
           <Route path='alerts' element={<Livejobalertpage/>}></Route>
           
@@ -85,9 +97,17 @@ function App() {
         <Route index element={<UserDashboardhomepage/>}></Route>
         <Route path='my-profile' element={<Userprofilepage/>}></Route>
         <Route path='create-profile' element={<JobProfileForm/>}></Route>
-          
+    
+        <Route path='update-profile' element={<JobProfilupdateform/>}></Route>
+       
+        <Route path="applied-jobs" element={<Jobactivety />} />
+      
+        <Route path="selected-applications" element={<Shortlistjobs/>} />
          
-          <Route path='alerts' element={<Livejobalertpage/>}></Route>
+        <Route path='alerts' element={<Notification/>}></Route>
+          
+          <Route path='bookmarked' element={<Bookmarkedpage></Bookmarkedpage>}></Route>
+
           <Route path='massage/:id' element={<Massgae/>}></Route>
           
           

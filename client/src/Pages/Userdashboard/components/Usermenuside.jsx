@@ -4,9 +4,21 @@ import { Link } from 'react-router-dom';
 import { MyContext } from '../../../context/context';
 
 function Usermenuside() {
+  // Example number of alerts, you should 
+  const {jobCount ,logout,userdata} = useContext(MyContext)
   // Example number of alerts, you should replace it with your actual alert count
-  const {userdata} = useContext(MyContext)
-  const numberOfAlerts = 5;
+  const numberOfAlerts = jobCount;
+  const handleLogout = () => {
+
+    const see= window.confirm("are you want to logout")
+    if( see)
+    {
+   
+      logout();
+    }  
+   
+   
+   };
 
   const sidebarMenu = [
     {
@@ -23,6 +35,10 @@ function Usermenuside() {
       title: 'Create Profile',
       icon: <FaPlusSquare />,
       path: 'create-profile',
+    }, {
+      title: 'update Profile',
+      icon: <FaPlusSquare />,
+      path: 'update-profile',
     },
     {
       title: 'Applied Jobs',
@@ -67,16 +83,7 @@ function Usermenuside() {
   
     
 
-    {
-      title: 'Logout',
-      icon: <FaSignOutAlt />,
-      path: '/',
-    },
-    {
-      title: 'Delete Profile',
-      icon: <FaTrashAlt />,
-      path: '/',
-    },
+    
   ];
 
   return (
@@ -101,6 +108,19 @@ function Usermenuside() {
                 </Link>
               </li>
             ))}
+            <li >
+                <button
+                  className="flex items-center p-2 w-full text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                  onClick={ handleLogout }
+                    >
+
+                  <span className='text-blue-500 p-2 bg-gray-300 rounded-full hover:text-black'>
+                  <FaSignOutAlt />
+                  </span>
+                  <span className="ms-3">Logout</span>
+                  </button>
+                
+              </li>
           </ul>
         </div>
       </aside>

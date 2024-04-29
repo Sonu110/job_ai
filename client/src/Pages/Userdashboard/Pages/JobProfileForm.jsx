@@ -56,7 +56,6 @@ function JobProfileForm() {
       formData.append(`educationList[${index}][description]`, education.description);
     });
   
-    console.log(...formData);
     try {
       const response = await fetch(`${import.meta.env.VITE_API_URL}/userprofiledata`, {
         method: 'POST',
@@ -65,14 +64,15 @@ function JobProfileForm() {
         },
         body:   formData,
       });
-  
+      
+      const data  = await response.json()
       if (response.ok) {
         console.log('Form submitted successfully!');
         toast.success("Form  data submit successfully")
        
       } else {
         console.error('Error submitting form:', response.statusText);
-        toast.error("Error")
+        toast.error("Error " + data.error)
       }
     } catch (error) {
       console.error('Error submitting form:', error);
@@ -256,6 +256,7 @@ const addPortfolio = () => {
         }
        
         </button>
+      <ToastContainer></ToastContainer>
       </form>
     </div>
   );

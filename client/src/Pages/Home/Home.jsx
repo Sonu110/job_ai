@@ -19,8 +19,6 @@ function Home() {
   const [isLoading, setIsLoading] = useState(true);
   const {bookmarkedJobs, setBookmarkedJobs ,jobData, setJobData,toggleBookmark } = useContext(MyContext)
 
-
-  console.log("job data ", jobData);
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location.pathname]);

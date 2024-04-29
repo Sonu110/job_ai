@@ -39,7 +39,7 @@ const handleLogout = () => {
 
 const handleScroll = () => {
   const position = window.scrollY;
-  console.log('Scroll Position:', position); // Log scroll position
+ 
   setScrollPosition(position);
 };
 

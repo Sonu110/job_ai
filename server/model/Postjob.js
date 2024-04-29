@@ -5,23 +5,30 @@ const jobSchema = new mongoose.Schema({
     jobTitle: String,
     jobLocation: String,
     openings: Number,
-    totalExp: String,
-    salary: String,
+    totalExp: Number,
+    salary: Number,
     bonus: String,
     jobDescription: String,
-    skills: String,
-    companyName: String,
-    contactPerson: String,
-    phoneNumber: String,
-    email: String,
-    contactProfile: String,
-    organizationSize: String,
-    jobAddress: String,
+    skills: [String],
+    jobCategory: String,
+    jobType: String,
     personal: [String],
     education: [String],
     additional: [String],
+
+
+    logo: String,
+    companyName: String,
+    emailAddress: String,
+    phoneNumber: String,
+    websiteLink: String,
+
+
     applieduser: [{ type: mongoose.Schema.ObjectId, ref: "applieduser" }]
-  });
+  },
+{
+  timestamps : true
+});
   
   const Postjob = mongoose.model('Postjob', jobSchema);
  module.exports = Postjob

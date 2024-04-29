@@ -1,3 +1,4 @@
+const Companyprofiledata = require('../model/Companyprofiledata');
 const Postjob = require('../model/Postjob')
 
 const postjobpostapi = async (req,res)=>{
@@ -5,10 +6,19 @@ const postjobpostapi = async (req,res)=>{
     try {
         const formData = req.body;
         const userId = req.user.id; 
+        const company = await Companyprofiledata.findOne({companyId:userId})
+        if(!company)
+        {
+            return res.status(404).json({ error: 'company  not found' });
+        }
     
         const job = new Postjob({
-            userId: userId, 
-       
+            userId: userId,
+            logo: company.logo,
+            companyName: company.companyName,
+            emailAddress: company.emailAddress,
+            phoneNumber: company.phoneNumber,
+            websiteLink: company.websiteLink,
             ...formData
         });
         

@@ -17,7 +17,6 @@ const Navbar = () => {
  const [profile, setProfile] = useState(false);
  const [scrollPosition, setScrollPosition] = useState(0);
 
- console.log(jobCount);
  
  const toggleMenu = () => {
   setShow(!show);
@@ -106,8 +105,15 @@ useEffect(() => {
       </div>
       <div class="flex flex-1 items-center justify-center  sm:items-stretch sm:justify-between">
         <div class="flex flex-shrink-0 items-center ">
-          <img class="h-8 w-auto" src={logo} alt="Your Company"/>
-          
+        <img
+  className="h-8 w-auto"
+  src={logo}
+  onError={(e) => {
+    e.target.src = "https://source.unsplash.com/random";
+  }}
+  alt="Your Company"
+/>
+
         </div>
         <div class="hidden sm:ml-6 sm:block">
           <div class="flex space-x-4">
@@ -176,7 +182,7 @@ data  ?
   src={`${import.meta.env.VITE_API_URL}/${userdata.data?.file}`}
   alt="User"
   onError={(e) => {
-    console.error('Error loading image:', e);
+    e.target.src = "https://source.unsplash.com/random";
   }}
   className=" h-12 rounded-2xl w-12"
 />

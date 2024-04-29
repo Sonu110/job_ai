@@ -18,7 +18,6 @@ const Dashbordnavbar = () => {
  const [profile, setProfile] = useState(false);
  const [scrollPosition, setScrollPosition] = useState(0);
 
- console.log(jobCount);
  
  const toggleMenu = () => {
   setShow(!show);
@@ -39,7 +38,7 @@ const handleLogout = () => {
 
 const handleScroll = () => {
   const position = window.scrollY;
-  console.log('Scroll Position:', position); // Log scroll position
+ 
   setScrollPosition(position);
 };
 

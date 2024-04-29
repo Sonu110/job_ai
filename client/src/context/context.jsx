@@ -4,6 +4,7 @@ import Loader from '../components/Loader';
 const MyContext = createContext();
 
 const MyProvider = ({ children }) => {
+  const storedBookmarkedJobs = JSON.parse(localStorage.getItem('bookmarkedJobs')) || [];;
   const [data, setData] = useState(false);
   const [post , setPost] = useState(false);
   const [userdata, setUserData] = useState({});
@@ -11,11 +12,11 @@ const MyProvider = ({ children }) => {
   const [catagory , setCatagory] = useState(''); // Corrected the spelling to 'category'
   const [jobCount, setJobCount] = useState(0);
   const [chatsocket , setchatsocket] = useState(null)
-  const [bookmarkedJobs, setBookmarkedJobs] = useState([]);
+  const [bookmarkedJobs, setBookmarkedJobs] = useState(storedBookmarkedJobs);
   const [jobData, setJobData] = useState([]);
 
+ 
 
-  console.log("userdatais " ,userdata);
 
 
   useEffect(() => {
@@ -57,13 +58,12 @@ const MyProvider = ({ children }) => {
     };
 
     profile();
-  }, [data,post]); // Removed [data, post] dependencies
+  }, [data,post]); 
 
-
-
-
-
-
+ 
+  useEffect(() => {
+    localStorage.setItem('bookmarkedJobs', JSON.stringify(bookmarkedJobs));
+  }, [bookmarkedJobs]);
 
 
 
