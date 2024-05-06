@@ -1,12 +1,15 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import { MyContext } from '../../context/context';
 
 function Notification() {
     const { id } = useParams();
     const [notifications, setNotifications] = useState([]);
     const {jobCount } = useContext(MyContext)
-
+    const location = useLocation();
+    useEffect(() => {
+      window.scrollTo(0, 0);
+    }, [location.pathname]);
 
     useEffect(() => {
         const fetchData = async () => {

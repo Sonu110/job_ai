@@ -1,5 +1,5 @@
-import React, { useContext, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import logo from '../../assets/images/logo.png'
 import { ToastContainer, toast } from 'react-toastify';
@@ -25,6 +25,11 @@ function Login() {
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
   };
+
+  const location = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
 const senddata =  async (event)=>{
   event.preventDefault();

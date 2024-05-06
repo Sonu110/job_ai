@@ -1,7 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
 import { ToastContainer, toast } from 'react-toastify';
 const PostJobForm = () => {
+  const location = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   const [loading , setLoading] = useState(false)
   const [formData, setFormData] = useState({

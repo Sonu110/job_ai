@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import Selecton from '../../components/Selecton';
 
 function Jobactivety() {
   const { id } = useParams();
   const [activitiesData, setActivitiesData] = useState([]);
   const [loading, setLoading] = useState(true);
+  
+  const location = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   useEffect(() => {
     const fetchData = async () => {

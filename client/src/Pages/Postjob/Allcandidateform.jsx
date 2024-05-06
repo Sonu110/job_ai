@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState, useCallback } from 'react';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import { MyContext } from '../../context/context';
 import Selecton from '../../components/Selecton';
 
@@ -10,6 +10,10 @@ function Allcandidateform() {
     const [update, setupdate] = useState(false)
     const [toggleState, setToggleState] = useState({});
     const { jobCount } = useContext(MyContext);
+    const location = useLocation();
+    useEffect(() => {
+      window.scrollTo(0, 0);
+    }, [location.pathname]);
 
     useEffect(() => {
         const fetchData = async () => {

@@ -595,6 +595,7 @@ router.route('/userprofiledata').post(auth, upload.single('file'), async (req, r
 router.route('/comapny-profile').post(auth, upload.single('logo'), async (req, res) => {
     const userId = req.user.id;
 
+
     if (!req.file) {
       return res.status(400).json({ error: 'No file uploaded' });
     }
@@ -626,6 +627,7 @@ router.route('/comapny-profile').post(auth, upload.single('logo'), async (req, r
   }).get(auth,async (req,res)=>
   {
     try {
+        console.log("api working");
       
         const userId = req.user.id;
         const companydata = await Companyprofiledata.find({ companyId: userId });

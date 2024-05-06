@@ -37,41 +37,7 @@ function HeroSection() {
             <h1 className='text-xl   sm:text-5xl md:text-6xl text-start'>There Are <span className='text-primary'>93</span> Postings Here For you!</h1>
             <h2 className='text-sm text-secondary-200'>Find Jobs, Employment & Career Opportunities</h2>
              
-            <form className="  grid grid-cols-1 md:grid-cols-4  gap-2  bg-white p-5 w-full">
-        <div>
-          <label htmlFor="category" className="block text-secondary-100 font-bold mb-5 ">
-            Category
-          </label>
-          <select id="category" name="category" className="w-full border border-gray-300 p-2 sm:p-3 rounded-lg">
-            <option value=""> Category</option>
-            <option value="technology">Technology</option>
-            <option value="fashion">Fashion</option>
-            <option value="sports">Sports</option>
-          </select>
-        </div>
-        <div>
-          <label htmlFor="state" className="block  text-secondary-100 font-bold mb-5 ">
-            State
-          </label>
-          <select id="state" name="state" className="w-full border border-gray-300 p-2 sm:p-3 rounded-lg">
-            <option value="">Select State</option>
-            <option value="new-york">New York</option>
-            <option value="california">California</option>
-            <option value="texas">Texas</option>
-          </select>
-        </div>
-        <div>
-          <label htmlFor="title" className="block  text-secondary-100 font-bold mb-5 ">
-            Search Title
-          </label>
-          <input type="text" id="title" name="title" className="w-full border border-gray-300 p-2 sm:p-3 rounded-lg" placeholder="Enter search title"/>
-        </div>
-        <div>
-          <button type="submit" className="w-full rounded-xl bg-primary sm:mt-11 px-6 py-3 text-xl font-medium uppercase text-white">
-            Find
-          </button>
-        </div>
-      </form>
+     
             <h2 className='text-[0.7rem] text-secondary-200'>Popular Searches : Designer, Developer, Web, IOS, PHP, Senior, Engineer,</h2>
           </motion.div>
 

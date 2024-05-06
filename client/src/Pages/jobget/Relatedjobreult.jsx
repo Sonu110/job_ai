@@ -79,7 +79,7 @@ const {id} = useParams()
 
 
   return (
-    <div className={`${isFixed ? 'fixed px-5' : ''}  top-20 z-50 min-w-full mb-56 bottom-0 `}>
+    <div className={`${isFixed  ? 'fixed px-5' : ''}  top-20 z-50 min-w-full mb-56 bottom-0   `}>
      {
       loading ? <Jobloadingresult></Jobloadingresult>
      

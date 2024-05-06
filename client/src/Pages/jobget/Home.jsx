@@ -1,14 +1,20 @@
 import React, { useContext, useEffect, useState } from 'react'
 import Jobseachbox from './Jobseachbox'
-import Jobresult from './Jobresult'
 import Relatedjobreult from './Relatedjobreult'
 import Selecton from '../../components/Selecton'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import Filter from './Filter'
 import Jobtestcomponent from '../../components/Jobtestcomponent'
 import { MyContext } from '../../context/context'
 
 function Findjobhome() {
+
+
+  
+  const location = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
 
   const [dataid , setid]= useState('')
@@ -123,13 +129,17 @@ const toggleFilterMenu = () => {
             <div onClick={() => setid(job?._id)} className='pb-7'>
             <Jobtestcomponent
                 key={job.id} 
+                
                 jobId={job._id} // Pass jobId as prop
                 comapnyname={job?.companyName} 
                 salary={job.salary} 
                 location={job.jobLocation} 
                 time={job.time} 
                 isBookmarked={bookmarkedJobs.some(bookmarkedJob => bookmarkedJob._id === job._id)} // Check if the job is bookmarked
-                toggleBookmark={toggleBookmark} // Pass toggleBookmark function as prop
+                toggleBookmark={toggleBookmark} 
+                bool={false}
+                
+                // Pass toggleBookmark function as prop
               />
             </div>
           </Link>
@@ -143,6 +153,7 @@ const toggleFilterMenu = () => {
                 location={job.jobLocation} 
                 time={job.time} 
                 isBookmarked={bookmarkedJobs.some(bookmarkedJob => bookmarkedJob._id === job._id)} // Check if the job is bookmarked
+                bool={true}
                 toggleBookmark={toggleBookmark} // Pass toggleBookmark function as prop
               />
           </div>
