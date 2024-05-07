@@ -559,6 +559,7 @@ router.route('/userprofiledata').post(auth, upload.single('file'), async (req, r
   
       // Check if a file was uploaded
       let profilePicture = null;
+      
       if (req.file) {
         profilePicture = req.file.path;
       }

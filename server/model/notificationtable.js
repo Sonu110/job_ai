@@ -9,6 +9,9 @@ const NotificationSchema = new mongoose.Schema({
     jobDescription: { type: String, required: true },
     user:{type:Boolean , require: true , default: false , ref:"usernotifaction"},
     createdAt: { type: Date, default: Date.now }, // Add a createdAt field with default value
+},
+{
+    timestamps:true
 });
 
 // Create a model for the notification table

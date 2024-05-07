@@ -50,6 +50,10 @@ const userdata = new mongoose.Schema({
     
     
 
+}
+,
+{
+    timestamps:true
 });
 
 const userdatas = mongoose.model('userdata', userdata);

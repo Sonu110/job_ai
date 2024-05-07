@@ -16,10 +16,12 @@ const Navbar = () => {
  const [show, setShow] = useState(false);
  const [profile, setProfile] = useState(false);
  const [scrollPosition, setScrollPosition] = useState(0);
+ const [mobile, setmobile]=   useState(false)
 
  
  const toggleMenu = () => {
   setShow(!show);
+  setmobile(!mobile)
  
 };
 
@@ -84,7 +86,7 @@ useEffect(() => {
 
   return (
     <>
-<nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${location.pathname === "/" ? (scrollPosition > 50 ? 'bg-white shadow-md' : 'bg-transparent') : 'bg-white shadow-md'}`}>
+<nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${location.pathname === "/" ? (scrollPosition > 50 ||  mobile ? 'bg-white shadow-md' : 'bg-transparent') : 'bg-white shadow-md'}`}>
 
   <div class="mx-auto  px-5 sm:px-7 lg:px-10  p-1 ">
     <div class="relative flex h-16 items-center justify-between  ">
@@ -117,8 +119,18 @@ useEffect(() => {
         </div>
         <div class="hidden sm:ml-6 sm:block">
           <div class="flex space-x-4">
-            <Link to={'/'} class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" >Home</Link>
-
+          <Link
+  to={'/'}
+  class={`${
+    location.pathname === "/"
+      ? scrollPosition > 50 || mobile
+        ? 'text-black hover:bg-gray-700 hover:text-white'
+        : 'hover:bg-white hover:text-black text-white'
+      : ''
+  } px-3 hover:shadow-md py-2 rounded-md`}
+>
+  Home
+</Link>
 
 
     
@@ -126,20 +138,38 @@ useEffect(() => {
             {
   data || post ? (
     userdata && userdata.data && userdata.data.catagory === 'job_seeker' ? (
-      <Link to={'/getjobs'} className="hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Find job</Link>
+      <Link to={'/getjobs'} class={`${
+        location.pathname === "/"
+          ? scrollPosition > 50 || mobile
+            ? 'text-black hover:bg-gray-700 hover:text-white'
+            : 'hover:bg-white hover:text-black text-white'
+          : ''
+      } px-3 hover:shadow-md py-2 rounded-md`}>Find job</Link>
     ) : (
-      <Link to={'/postjob'} className="hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Post jobs</Link>
+      <Link to={'/postjob'} class={`${
+    location.pathname === "/"
+      ? scrollPosition > 50 || mobile
+        ? 'text-black hover:bg-gray-700 hover:text-white'
+        : 'hover:bg-white hover:text-black text-white'
+      : ''
+  } px-3 hover:shadow-md py-2 rounded-md`}>Post jobs</Link>
     )
   ) : null
 }
 
 
-            <Link  to={'/contact'} class=" hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Contact  us</Link>
+            <Link  to={'/contact'} class={`${
+    location.pathname === "/"
+      ? scrollPosition > 50 || mobile
+        ? 'text-black hover:bg-gray-700 hover:text-white'
+        : 'hover:bg-white hover:text-black text-white'
+      : ''
+  } px-3 hover:shadow-md py-2 rounded-md`}>Contact  us</Link>
             {
               data  || post? 
               null
            
-              :  <Link to={'/login'} class=" bg-blue-700 hover:bg-blue-600  text-white rounded-md px-3 py-2 text-sm font-medium">Login</Link>
+              :  <Link to={'/login'} class={`${scrollPosition > 50  ||  mobile ? 'text-black  hover:bg-gray-700  hover:text-white'  : 'hover:bg-white   hover:text-black text-white '} bg-blue-800 text-white px-3  hover:shadow-md py-2  rounded-md`}>Login</Link>
           }
           </div>
         </div>

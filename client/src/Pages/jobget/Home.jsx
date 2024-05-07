@@ -109,7 +109,7 @@ const toggleFilterMenu = () => {
 
       <div className=' w-full  border-b-2 border-gray-400 '></div>
       <Filter filters={filters} onFilterChange={handleFilterChange} isFilterMenuOpen={isFilterMenuOpen} toggleFilterMenu={toggleFilterMenu} />
-      <div className="button  bg-gray-600 ml-5  text-white p-3 px-10 inline-block" onClick={toggleFilterMenu}>Filter</div>
+      <div className="button  bg-blue-800 ml-5 mb-1 mt-2 rounded-lg  cursor-pointer text-white p-3 px-10 inline-block" onClick={toggleFilterMenu}>Filter</div>
 
 
 <div className=' grid grid-cols-1 lg:grid-cols-2  gap-6 px-3'>

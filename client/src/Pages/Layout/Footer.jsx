@@ -105,10 +105,7 @@ const Footer = () => {
         </div>
       </div>
     
-      <div class="bg-black/5 p-6 text-center">
-        <span>© 2023 Copyright:</span>
-        
-      </div>
+     
     </footer>
   );
 };

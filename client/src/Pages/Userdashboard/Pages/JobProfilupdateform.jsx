@@ -33,7 +33,7 @@ function JobProfilupdateform() {
           const data = await response.json();
           const userProfile = data[0]; // Assuming the API returns a single user profile
           setFormData(userProfile);
-          toast.error('Error fetching user profile data');
+        
         } else {
           toast.error('Error fetching user profile data');
         }
@@ -56,6 +56,8 @@ function JobProfilupdateform() {
 
   const handleProfilePictureChange = (e) => {
     const file = e.target.files[0];
+    console.log(file);
+   
     setFormData({
       ...formData,
       profilePicture: file
