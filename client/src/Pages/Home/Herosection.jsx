@@ -28,14 +28,14 @@ function HeroSection() {
     <div className="relative min-h-screen w-full flex items-center justify-center">
       {/* Background image */}
       <div
-        className="absolute inset-0 bg-cover bg-center z-0"
+        className="absolute inset-0 bg-cover bg-center z-0   bg-blue-900"
         style={{
           backgroundImage: `url(${backgroundImage})`,
         }}
       >
         <div className="container grid grid-cols-1 lg:grid-cols-2 h-full  px-0 sm:px-10 pt-20">
           <motion.div className="fromconatiner p-8 flex items-start gap-6 justify-center flex-col" variants={containerVariants} initial="hidden" animate="visible">
-            <h1 className='text-xl text-white   sm:text-5xl md:text-6xl text-start'>There Are <span className='text-primary'>93</span> Postings Here For you!</h1>
+            <h1 className='text-3xl text-white   sm:text-5xl md:text-6xl text-start'>There Are <span className='text-primary'>93</span> Postings Here For you!</h1>
             <h2 className='text-sm text-white'>Find Jobs, Employment & Career Opportunities</h2>
              
      

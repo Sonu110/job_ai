@@ -90,7 +90,7 @@ function Usermenuside() {
     <div>
       <aside
         id="separator-sidebar"
-        className="hidden sm:block fixed top-0 left-0 z-40 w-64 min-h-screen transition-transform -translate-x-full sm:translate-x-0"
+        className="hidden  sm:block fixed top-0 left-0 z-40 w-64 min-h-screen transition-transform -translate-x-full sm:translate-x-0"
         aria-label="Sidebar"
       >
         <div className="h-full px-3 py-4 bg-white pt-20 min-h-screen overflow-y-scroll dark:bg-gray-800">

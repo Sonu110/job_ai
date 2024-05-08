@@ -2,8 +2,11 @@ import { useEffect, useState } from "react";
 
 import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
+import Selecton from "../../../components/Selecton";
+import Noprofile from "../../../components/Noprofile";
 
 export default function Companyprofileupdate() {
+  const [loading, setLoading] = useState(false);
 
   const [socialNetworks, setSocialNetworks] = useState([{ name: '', link: '' }]);
   const [logo, setLogo] = useState(null);
@@ -17,6 +20,7 @@ export default function Companyprofileupdate() {
     city: '',
     completeAddress: ''
   });
+  console.log(formData.companyName);
 
   const handleAddSocialNetwork = () => {
     setSocialNetworks([...socialNetworks, { name: '', link: '' }]);
@@ -35,6 +39,7 @@ export default function Companyprofileupdate() {
   };
 
   useEffect(() => {
+    setLoading(true);
     const fetchCompanyProfile = async () => {
       try {
         const response = await fetch(`${import.meta.env.VITE_API_URL}/comapny-profile`, {
@@ -56,6 +61,10 @@ export default function Companyprofileupdate() {
       } catch (error) {
         toast.error('Error fetching company profile data!');
         console.error('Error fetching company profile data:', error);
+      }
+      finally
+      {
+        setLoading(false)
       }
     };
 
@@ -104,6 +113,14 @@ export default function Companyprofileupdate() {
 
   return (
     <div>
+
+
+
+{
+        loading ? <Selecton></Selecton>: 
+      
+       formData.companyName.length >0 ? (
+
       <div className="p-6 pt-24 bg-white">
         <h1 className="text-3xl font-bold mb-4">Update profile</h1>
         <form onSubmit={handleSubmit}>
@@ -222,6 +239,12 @@ export default function Companyprofileupdate() {
         <ToastContainer />
         </form>
       </div>
+       ):(
+        <Noprofile></Noprofile>
+      )
+              
+        }
+
     </div>
   );
 }

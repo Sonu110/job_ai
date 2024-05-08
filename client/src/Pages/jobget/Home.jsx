@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import Jobseachbox from './Jobseachbox'
+
 import Relatedjobreult from './Relatedjobreult'
 import Selecton from '../../components/Selecton'
 import { Link, useLocation } from 'react-router-dom'
@@ -100,14 +100,63 @@ const toggleFilterMenu = () => {
   },[])
 
 
+  const filteredJobs = jobData.filter(job => {
+    // Filter by search title
+    if (filters.searchTitle && !job.jobTitle.toLowerCase().includes(filters.searchTitle.toLowerCase())) {
+      return false;
+    }
+
+    // Filter by category
+    if (filters.category && job.jobCategory !== filters.category) {
+      return false;
+    }
+
+    // Filter by job type
+    if (filters.jobType.length > 0 && !filters.jobType.includes(job.jobType)) {
+      return false;
+    }
+
+    // Filter by date post
+    if (filters.experienceLevel && job.totalExp < filters.experienceLevel) {
+      return false;
+    }
+  
+    // Filter by salary level
+    if (filters.salaryLevel && job.salary > filters.salaryLevel) {
+      return false;
+    }
+    
+
+
+     // Filter by date post
+  if (filters.datePost === 'last24') {
+    const twentyFourHoursAgo = new Date(Date.now() - 24 * 60 * 60 * 1000);
+    const jobPostedAt = new Date(job.updatedAt);
+    if (jobPostedAt < twentyFourHoursAgo) {
+      return false;
+    }
+  } else if (filters.datePost === 'lastWeek') {
+    const oneWeekAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
+    const jobPostedAt = new Date(job.updatedAt);
+    if (jobPostedAt < oneWeekAgo) {
+      return false;
+    }
+  }
+
+    // Add more filter conditions as needed
+
+    return true;
+  });
+
+
   return (
 
     <div className=' min-h-screen' >
       
-      <Jobseachbox></Jobseachbox>
+      {/* <Jobseachbox></Jobseachbox> */}
 
 
-      <div className=' w-full  border-b-2 border-gray-400 '></div>
+      <div className=' w-full  border-b-2 mt-24 border-gray-400 '></div>
       <Filter filters={filters} onFilterChange={handleFilterChange} isFilterMenuOpen={isFilterMenuOpen} toggleFilterMenu={toggleFilterMenu} />
       <div className="button  bg-blue-800 ml-5 mb-1 mt-2 rounded-lg  cursor-pointer text-white p-3 px-10 inline-block" onClick={toggleFilterMenu}>Filter</div>
 
@@ -122,7 +171,7 @@ const toggleFilterMenu = () => {
   loading ? (
     <Selecton />
   ) : (
-    jobData.map((job) => (
+    filteredJobs.map((job) => (
       <div key={job._id}>
         { !size ? (
           <Link to={`${job._id}`}>
@@ -134,7 +183,12 @@ const toggleFilterMenu = () => {
                 comapnyname={job?.companyName} 
                 salary={job.salary} 
                 location={job.jobLocation} 
-                time={job.time} 
+          
+                time={job.updatedAt.slice(11, 16)} // Adjust to the correct nested path
+                jobsector={job.jobCategory}
+                jointype={job.jobType}
+                jobtime={job.jobTitle}
+                
                 isBookmarked={bookmarkedJobs.some(bookmarkedJob => bookmarkedJob._id === job._id)} // Check if the job is bookmarked
                 toggleBookmark={toggleBookmark} 
                 bool={false}
@@ -146,12 +200,17 @@ const toggleFilterMenu = () => {
         ) : (
           <div onClick={() => setid(job?._id)} className='pb-7 cursor-pointer'>
              <Jobtestcomponent
-                key={job.id} 
-                jobId={job._id} // Pass jobId as prop
-                comapnyname={job?.companyName} 
-                salary={job.salary} 
-                location={job.jobLocation} 
-                time={job.time} 
+               key={job.id} 
+               jobId={job._id} // Pass jobId as prop
+               comapnyname={job?.companyName} 
+               salary={job.salary} 
+               location={job.jobLocation} 
+         
+               time={job.updatedAt.slice(11, 16)} // Adjust to the correct nested path
+               jobsector={job.jobCategory}
+               jointype={job.jobType}
+               jobtime={job.jobTitle}
+               
                 isBookmarked={bookmarkedJobs.some(bookmarkedJob => bookmarkedJob._id === job._id)} // Check if the job is bookmarked
                 bool={true}
                 toggleBookmark={toggleBookmark} // Pass toggleBookmark function as prop

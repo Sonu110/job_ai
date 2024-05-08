@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { FaCheckCircle } from "react-icons/fa";
+import Noprofile from '../../../components/Noprofile';
 function Userprofilepage() {
 
     const [ userData , setuserprofiledata]= useState(null)
@@ -40,7 +41,7 @@ console.log("userprofile data is ",  userData);
                 <p>Loading...</p>
             ) : (
 <div className="rounded-lg pt-24 bg-white border bg-card text-card-foreground shadow-sm w-full" data-v0-t="card">
-      {userData && (
+      {userData ? (
         <>
           <div className="flex flex-col space-y-1.5 p-6 pb-0">
             <div className="space-y-2">
@@ -134,7 +135,9 @@ console.log("userprofile data is ",  userData);
             </div>
           </div>
         </>
-      )}
+      ):
+      <Noprofile></Noprofile>
+      }
     </div>
 
 )}

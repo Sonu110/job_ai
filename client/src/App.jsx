@@ -14,7 +14,6 @@ import Findjobprotected from "./Pages/Protected/findjob";
 import { useContext } from "react";
 import { MyContext } from "./context/context";
 import Layout from "./Pages/Layout/Layout";
-import Profile from "./Pages/Profilepage/Profile";
 import PostJobForm from "./Pages/Postjob/PostJobForm";
 import Conatctform from "./Pages/Conatctform";
 import Relatedjobreult from "./Pages/jobget/Relatedjobreult";
@@ -61,9 +60,7 @@ function App() {
             <Route path=":id" element={<Relatedjobreult></Relatedjobreult>}></Route>
             <Route path="notifation/:id" element={<Notification/>}></Route>
           </Route>
-          <Route path="/profile" element={<Findjobprotected user={data || post }></Findjobprotected>} >
-            <Route path="" element={<Profile />} />
-          </Route>
+         
           <Route path="/postjob" element={<Findjobprotected user={post}  ></Findjobprotected>} >
             <Route path="" element={<PostJobForm />} />
             <Route path="Allcandidateform/:id" element={<Allcandidateform></Allcandidateform>}></Route>

@@ -32,10 +32,13 @@ function Home() {
           },
         });
 
+      
+
         if (response.ok) {
           const data = await response.json();
           console.log('data received')
           setJobData(data.data);
+          console.log(data.data);
         }
       } catch (error) {
         console.log("error is ", error);
@@ -70,7 +73,12 @@ function Home() {
                 comapnyname={job?.companyName} 
                 salary={job.salary} 
                 location={job.jobLocation} 
-                time={job.time} 
+          
+                time={job.updatedAt.slice(11, 16)} // Adjust to the correct nested path
+                jobsector={job.jobCategory}
+                jointype={job.jobType}
+                jobtime={job.jobTitle}
+                
                 isBookmarked={bookmarkedJobs.some(bookmarkedJob => bookmarkedJob._id === job._id)} // Check if the job is bookmarked
                 toggleBookmark={toggleBookmark} // Pass toggleBookmark function as prop
               />

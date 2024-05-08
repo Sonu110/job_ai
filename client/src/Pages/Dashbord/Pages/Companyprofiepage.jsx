@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { FaCheckCircle } from "react-icons/fa";
+import Noprofile from '../../../components/Noprofile';
 
 const Companyprofiepage = () => {
   const [formData, setFormData] = useState({});
@@ -35,7 +36,7 @@ const Companyprofiepage = () => {
     <div className=" min-h-screen flex items-center w-full">
 
         <div className=" w-full mx-auto pt-24 p-6  bg-white rounded-lg shadow-lg">
-      {formData && (
+      {Object.keys(formData).length>0  ? (
         <>
           <div className="flex items-center justify-between mb-4">
             <img  src={`${import.meta.env.VITE_API_URL}/${formData?.logo}`} alt="Company Logo" className="w-20 h-20 object-cover rounded-full" />
@@ -66,7 +67,10 @@ const Companyprofiepage = () => {
           </p>
           {formData.validCompany && <p className="text-green-500 font-bold mt-2">Valid Company</p>}
         </>
-      )}
+      )
+    :
+    <Noprofile></Noprofile>
+    }
     </div>
 
     </div>

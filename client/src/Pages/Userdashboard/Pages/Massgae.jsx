@@ -18,6 +18,8 @@ function Massgae() {
     const {id} = useParams();
     const [showMessageBox, setShowMessageBox] = useState(false);
     const [size, setSize] = useState(false);
+    const [filteredChatUsers, setFilteredChatUsers] = useState([]); // State to store filtered users
+
 
     console.log("the received message", recived);
 
@@ -173,15 +175,26 @@ function Massgae() {
     // Remove the temporary timestampMilliseconds property
     allMessages.forEach(message => delete message.timestampMilliseconds);
 
+    
+
 
     const handleBackButtonClick = () => {
       setShowMessageBox(false); // Set showMessageBox state to false when back button is clicked
       history.goBack(); // Go back to the previous page
   };
 
+
+  const handleInputChanges = (e) => {
+    setInputValue(e.target.value);
+    setFilteredChatUsers(
+        chatuserdata.filter(user =>
+            user.username.toLowerCase().includes(e.target.value.toLowerCase())
+        )
+    );
+};
     return (
         <div>
-            <div className='mt-24'>
+            <div className='mt-24  '>
                 <div className="w-full" style={{ backgroundColor: '#fff' }}></div>
                 <div className="container mx-auto">
                     <div className="h-[80vh]">
@@ -191,13 +204,23 @@ function Massgae() {
                                     <div>
                                         <img className="w-10 h-10 rounded-full" src={`${import.meta.env.VITE_API_URL}/${userdata.data?.file}`} alt="User"/>
                                     </div>
+                                    <div>
+                                {userdata.data?.username}
+
+                                    </div>
                                 </div>
                                 <div className="py-2 px-2 bg-grey-lightest">
-                                    <input type="text" className="w-full px-2 py-2 text-sm" placeholder="Search or start new chat"/>
+                                <input
+                                        type="text"
+                                        className="w-full px-2 py-2 text-sm"
+                                        placeholder="Search or start new chat"
+                                        value={inputValue}
+                                        onChange={handleInputChanges}
+                                    />
                                 </div>
                                 <div className="bg-gray-100 flex-1 overflow-auto gap-2">
                                     {Loading ? <Selecton /> : (
-                                        chatuserdata.map((i) => (
+                                        (inputValue.trim() === '' ? chatuserdata : filteredChatUsers).map((i) => (
                                             <div onClick={() => fetchUserData(i?._id)} key={i._id} className="px-3 bg-blue-200 mt-1 flex items-center bg-grey-light cursor-pointer">
                                                 <div>
                                                     <img className="h-12 w-12 rounded-full" src={`${import.meta.env.VITE_API_URL}/${i?.file}`} alt="User"/>
@@ -207,13 +230,11 @@ function Massgae() {
                                                         <p className="text-grey-darkest">
                                                             {i?.username}
                                                         </p>
-                                                        <p className="text-xs text-grey-darkest">
-                                                            12:45 pm
-                                                        </p>
+                                                       
                                                     </div>
                                                     <p className="text-grey-dark mt-1 flex justify-between text-sm">
-                                                        last massage 
-                                                        <span className='p-1 px-3 rounded-full bg-red-600 text-white text-sm'>1</span>
+                                                         massage 
+                                                        
                                                     </p>
                                                 </div>
                                             </div>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Selecton from '../../../components/Selecton';
 
 function JobProfilupdateform() {
   const [formData, setFormData] = useState({
@@ -60,7 +61,8 @@ function JobProfilupdateform() {
    
     setFormData({
       ...formData,
-      profilePicture: file
+      profilePicture: file,
+      profilePicturePreview: URL.createObjectURL(file) 
     });
   };
 
@@ -69,22 +71,28 @@ function JobProfilupdateform() {
     setLoading(true);
   
     try {
-      // Ensure proper serialization of experienceList and educationList
-      const formDataToSend = {
-        ...formData,
-        experienceList: JSON.stringify(formData.experienceList), // Serialize experienceList
-        educationList: JSON.stringify(formData.educationList) // Serialize educationList
-      };
+      const formDataToSend = { ...formData };
   
       // Create a FormData object for file uploads
       const formDataFile = new FormData();
+  
+      // Append profile picture separately if it exists
+      if (formDataToSend.profilePicture) {
+        formDataFile.append("file", formDataToSend.profilePicture);
+      }
+  
+      // Remove profile picture from form data to prevent duplication
+      delete formDataToSend.profilePicture;
+      delete formDataToSend.profilePicturePreview;
+  
+      // Serialize experienceList and educationList
+      formDataToSend.experienceList = JSON.stringify(formDataToSend.experienceList);
+      formDataToSend.educationList = JSON.stringify(formDataToSend.educationList);
+  
+      // Append other form data to FormData object
       for (const key in formDataToSend) {
         if (formDataToSend.hasOwnProperty(key)) {
-          if (key === 'profilePicture' && formDataToSend[key] !== null) {
-            formDataFile.append(key, formDataToSend[key]);
-          } else if (key !== 'profilePicture') {
-            formDataFile.append(key, formDataToSend[key]);
-          }
+          formDataFile.append(key, formDataToSend[key]);
         }
       }
   
@@ -108,6 +116,7 @@ function JobProfilupdateform() {
       setLoading(false);
     }
   };
+  
   
 
   const addExperience = () => {
@@ -133,6 +142,12 @@ function JobProfilupdateform() {
   };
 
   return (
+    <div>
+
+      {
+        loading ? <Selecton></Selecton>: 
+      
+       (formData.fullName.length >0 ? (
     <div className="mx-auto p-6 min-h-screen bg-white rounded-lg shadow-lg">
       <h1 className="text-2xl font-bold mb-4 pt-32">Update User Profile</h1>
       <form className="space-y-4" onSubmit={handleSubmit}>
@@ -199,6 +214,15 @@ function JobProfilupdateform() {
         </button>
         <ToastContainer></ToastContainer>
       </form>
+    </div>
+  
+):(
+  <p>Data not present</p>
+)
+        )
+  }
+
+
     </div>
   );
 }

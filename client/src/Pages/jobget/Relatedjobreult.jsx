@@ -52,7 +52,7 @@ const {id} = useParams()
       const distanceFromBottom = documentHeight - (scrollY + windowHeight);
   
       // Determine if the element should be fixed based on scroll position and distance from bottom
-      const isFixed = scrollY >= 200 && distanceFromBottom > 400;
+      const isFixed = scrollY >= 100 && distanceFromBottom > 120;
   
       // Set the fixed state based on the conditions
       setIsFixed(isFixed);

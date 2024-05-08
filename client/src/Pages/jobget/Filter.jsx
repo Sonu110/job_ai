@@ -155,17 +155,7 @@ function Filter({ filters, onFilterChange, isFilterMenuOpen, toggleFilterMenu })
           {/* Experience level */}
           <div className='mt-5 mb-5'>
   <label htmlFor="experienceLevel">Experience Level</label>
-  <select
-    id="experienceLevel"
-    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-    onChange={(e) => setExperienceLevel(e.target.value)}
-  >
-    <option value="">Choose experience level</option>
-    <option value="entryLevel">Entry Level</option>
-    <option value="midLevel">Mid Level</option>
-    <option value="seniorLevel">Senior Level</option>
-    {/* Add more options if needed */}
-  </select>
+
   <input
     type="text"
     id="customExperienceLevel"

@@ -46,10 +46,15 @@ const userdata = new mongoose.Schema({
         default:""
     },
 
-    Notification :[Number]
+    Notification :[Number],
     
     
+    isadmin:
+    {
+        type:Boolean,
+        default:false,
 
+    }
 }
 ,
 {
